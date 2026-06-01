@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="OwnerFirstPM handles Manhattan condo rentals, tenant placement, board approvals, rent collection, and maintenance so owners can earn without managing the daily work.">
-  <title>OwnerFirstPM | Manhattan Condo Property Management</title>
+  <meta name="description" content="Get a free Manhattan condo property analysis from OwnerFirstPM by Podium Property Management.">
+  <title>OwnerFirstPM | Free Manhattan Condo Property Analysis</title>
   <link rel="icon" href="assets/images/favicon.png">
   <link rel="preload" href="assets/fonts/AlbertSans-Bold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="assets/fonts/AlbertSans-Medium.ttf" as="font" type="font/ttf" crossorigin>
@@ -23,246 +23,134 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <main class="page">
+  <header class="site-header">
+    <nav class="top-nav" aria-label="Primary navigation">
+      <a class="nav-logo" href="/" aria-label="Podium Property Management home">
+        <img src="assets/images/podium-logo-black.png" alt="Podium Property Management">
+      </a>
+      <a class="nav-cta" id="schedule-call-button" href="#analysis" aria-label="Free Property Analysis"><span>Free Property Analysis</span></a>
+    </nav>
+  </header>
+
+  <main>
     <section class="hero" id="top">
-      <div class="hero-copy">
-        <a class="brand" href="#top" aria-label="OwnerFirstPM home">
-          <img class="logo" src="assets/images/podium-logo-white.png" alt="OwnerFirstPM by Podium Property Management">
-        </a>
-        <p class="eyebrow">Manhattan Condo Management</p>
-        <h1>You did not buy a Manhattan condo to become a landlord.</h1>
-        <p class="hero-text">OwnerFirstPM handles board approvals, tenant placement, rent collection, and 3am maintenance calls, so your condo earns without taking over your life.</p>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Manhattan Condo Owners</p>
+          <h1>Still Managing Your Manhattan Condo Yourself?</h1>
+          <p class="hero-text">Get a free property analysis and see how much time, rent, and stress professional condo management could save you.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#analysis">Get My Free Analysis</a>
+            <a class="phone-link" id="phone-click" href="tel:+16465510375">Call 646-551-0375</a>
+          </div>
+        </div>
 
-        <div class="offer" id="offer">
-          <div class="offer-top">
-            <div class="offer-badge">$249<br>Waived</div>
-            <div>
-              <h2>Get a free rental analysis plus your setup fee waived.</h2>
-              <p>Send your building and unit details. We will estimate rent, flag board requirements, and show what our team can handle for you.</p>
+        <aside class="analysis-card" id="analysis" aria-labelledby="analysis-title">
+          <div class="card-kicker">Free Property Analysis</div>
+          <h2 id="analysis-title">Find out what your condo could earn.</h2>
+          <p>Tell us a little about your Manhattan property. We will review the opportunity and follow up with clear next steps.</p>
+
+          <form class="lead-form" name="ownerfirstpm-contact" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="ownerfirstpm-contact">
+            <input type="hidden" name="lead_source" value="OwnerFirstPM Website">
+            <input type="hidden" name="pipeline_stage" value="New Lead">
+            <input type="hidden" name="status" value="Prospect">
+            <p class="hidden">
+              <label>Do not fill this out if you are human: <input name="bot-field"></label>
+            </p>
+
+            <div class="form-grid">
+              <div class="form-row">
+                <label for="first-name">First Name</label>
+                <input id="first-name" name="first_name" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="form-row">
+                <label for="last-name">Last Name</label>
+                <input id="last-name" name="last_name" type="text" autocomplete="family-name" required>
+              </div>
+              <div class="form-row">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="form-row">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+              </div>
+              <div class="form-row full">
+                <label for="property-address">Property Address</label>
+                <input id="property-address" name="property_address" type="text" autocomplete="street-address" required>
+              </div>
+              <div class="form-row full">
+                <label for="is-rented">Is the property currently rented?</label>
+                <select id="is-rented" name="is_property_currently_rented" required>
+                  <option value="">Select one</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+              <div class="form-row full">
+                <label for="current-manager">Current Property Manager</label>
+                <input id="current-manager" name="current_property_manager" type="text" placeholder="Self-managed, company name, or none">
+              </div>
+              <div class="form-row full">
+                <label for="challenge">Biggest Challenge</label>
+                <textarea id="challenge" name="biggest_challenge" rows="4" required></textarea>
+              </div>
             </div>
-          </div>
-          <div class="actions">
-            <a class="btn btn-primary" id="schedule-call-button" href="#contact">Schedule My Free Analysis</a>
-            <a class="btn btn-secondary" id="phone-click" href="tel:+16465510375">Call 646-551-0375</a>
-          </div>
-          <p class="fine-print">No obligation. For new Manhattan condo owners who start with OwnerFirstPM.</p>
-        </div>
 
-        <div class="proof-strip" aria-label="OwnerFirstPM proof points">
-          <div class="proof">
-            <strong>Manhattan</strong>
-            <span>Exclusive Focus</span>
-          </div>
-          <div class="proof">
-            <strong>30 Days</strong>
-            <span>Avg. Placement</span>
-          </div>
-          <div class="proof">
-            <strong>$0</strong>
-            <span>Setup With Offer</span>
-          </div>
-        </div>
+            <button class="btn btn-primary form-submit" id="main-form-submit-button" type="submit">Submit My Free Analysis Request</button>
+            <p class="form-note">No obligation. No backend required. Your submission is captured by Netlify Forms.</p>
+          </form>
+        </aside>
       </div>
+    </section>
 
-      <div class="hero-image">
-        <img src="assets/images/hero-founders.jpg" alt="OwnerFirstPM property management team in Manhattan">
-        <div class="founder-note">
-          <p>"Owners should not have to learn every board rule, chase every contractor, or take every tenant call. That is what OwnerFirstPM is built for."</p>
-          <span>OwnerFirstPM Team</span>
+    <section class="intro-section">
+      <div class="section-inner intro-grid">
+        <div>
+          <p class="label">Built for Manhattan condo owners</p>
+          <h2>Your condo should feel like an asset, not another job.</h2>
         </div>
+        <p class="lead">Podium helps owners understand rental potential, board requirements, tenant quality, maintenance needs, and the management plan before making the next move.</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-inner split">
+      <div class="section-inner services-grid">
+        <article class="service-card">
+          <span>01</span>
+          <h3>Rental Value Review</h3>
+          <p>We look at your building, unit profile, and current Manhattan rental conditions.</p>
+        </article>
+        <article class="service-card">
+          <span>02</span>
+          <h3>Board and Lease Readiness</h3>
+          <p>We flag the approvals, documents, and timing that can slow down a rental.</p>
+        </article>
+        <article class="service-card">
+          <span>03</span>
+          <h3>Management Plan</h3>
+          <p>We explain how tenant placement, rent collection, repairs, and reporting would be handled.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark-band">
+      <div class="section-inner cta-row">
         <div>
-          <p class="label">The Problem</p>
-          <h2>Your investment started acting like a second job.</h2>
-          <p class="lead">A Manhattan condo can be a serious asset. But the minute you rent it out, you inherit board paperwork, building politics, tenant calls, contractor coordination, rent tracking, and compliance details.</p>
+          <p class="label">Ready for clarity?</p>
+          <h2>Start with a free property analysis.</h2>
         </div>
-        <div class="pain-grid">
-          <article class="pain">
-            <span class="pain-mark">01</span>
-            <h3>Board approvals slow everything down</h3>
-            <p>Every building has its own sublet process. One missing form can delay income for weeks.</p>
-          </article>
-          <article class="pain">
-            <span class="pain-mark">02</span>
-            <h3>Tenants call at the worst time</h3>
-            <p>Late-night leaks, appliance issues, lockouts, and follow-ups should not land on your phone.</p>
-          </article>
-          <article class="pain">
-            <span class="pain-mark">03</span>
-            <h3>Pricing mistakes get expensive</h3>
-            <p>Underpricing by even a few hundred dollars a month quietly eats into the return.</p>
-          </article>
-          <article class="pain">
-            <span class="pain-mark">04</span>
-            <h3>Repairs need local judgment</h3>
-            <p>Good property management means knowing who to call, what is fair, and what actually matters.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section band">
-      <div class="section-inner">
-        <p class="label">How It Works</p>
-        <h2>From one message to fully handled.</h2>
-        <div class="steps">
-          <article class="step">
-            <span class="step-num">01</span>
-            <h3>Free rental analysis</h3>
-            <p>We review your building, unit, comparable rentals, and likely board requirements.</p>
-          </article>
-          <article class="step">
-            <span class="step-num">02</span>
-            <h3>Board package handled</h3>
-            <p>We prepare applications, coordinate requirements, and keep the process moving.</p>
-          </article>
-          <article class="step">
-            <span class="step-num">03</span>
-            <h3>Tenant placed and screened</h3>
-            <p>We market the condo, screen applicants, verify employment, and align with building rules.</p>
-          </article>
-          <article class="step">
-            <span class="step-num">04</span>
-            <h3>You stop managing</h3>
-            <p>Rent is collected, repairs are coordinated, tenants contact us, and you receive reporting.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section included">
-      <div class="section-inner">
-        <p class="label">What We Handle</p>
-        <h2>Everything between your condo and your monthly income.</h2>
-        <p class="lead">OwnerFirstPM is built for Manhattan condo owners who want an operator, not another dashboard to manage.</p>
-        <div class="included-grid">
-          <article class="included-item">
-            <h3>Condo board management</h3>
-            <p>Applications, approvals, building requirements, and ongoing communication.</p>
-          </article>
-          <article class="included-item">
-            <h3>Tenant screening</h3>
-            <p>Credit, employment, references, background checks, and board-ready applicants.</p>
-          </article>
-          <article class="included-item">
-            <h3>Rent collection</h3>
-            <p>Monthly collection, direct deposit, late follow-up, and clear owner statements.</p>
-          </article>
-          <article class="included-item">
-            <h3>Maintenance coordination</h3>
-            <p>Tenants contact us. We coordinate vetted vendors and manage the repair process.</p>
-          </article>
-          <article class="included-item">
-            <h3>Lease and compliance</h3>
-            <p>NYC-conscious lease handling, renewal tracking, and documentation.</p>
-          </article>
-          <article class="included-item">
-            <h3>Owner reporting</h3>
-            <p>Clean monthly summaries so you know what happened without managing the work.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="quote-section">
-      <div class="quote-photo">
-        <img src="assets/images/team-quote.jpg" alt="OwnerFirstPM team in Manhattan">
-      </div>
-      <div class="quote-copy">
-        <p class="label">Why Owners Call Us</p>
-        <p class="quote">"I want the rent, not the landlord life."</p>
-        <p class="quote-body">That is the entire promise. We give Manhattan condo owners a local team that can handle the board, tenant, repairs, and daily details with the urgency this market demands.</p>
-      </div>
-    </section>
-
-    <section class="section form-section" id="contact">
-      <div class="section-inner form-layout">
-        <div class="form-copy">
-          <p class="label">Start Here</p>
-          <h2>Get your free rental analysis.</h2>
-          <p class="lead">Tell us about your property and what is getting in the way. We will follow up with a practical next step, not a generic sales script.</p>
-          <div class="contact-links">
-            <a id="email-click" href="mailto:hello@ownerfirstpm.com">hello@ownerfirstpm.com</a>
-            <a href="tel:+16465510375">646-551-0375</a>
-          </div>
-        </div>
-
-        <form class="lead-form" name="ownerfirstpm-contact" method="POST" action="/thank-you" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="ownerfirstpm-contact">
-          <input type="hidden" name="lead_source" value="OwnerFirstPM Website">
-          <input type="hidden" name="pipeline_stage" value="New Lead">
-          <input type="hidden" name="status" value="Prospect">
-          <p class="hidden">
-            <label>Do not fill this out if you are human: <input name="bot-field"></label>
-          </p>
-
-          <div class="form-row">
-            <label for="first-name">First Name</label>
-            <input id="first-name" name="first_name" type="text" autocomplete="given-name" required>
-          </div>
-          <div class="form-row">
-            <label for="last-name">Last Name</label>
-            <input id="last-name" name="last_name" type="text" autocomplete="family-name" required>
-          </div>
-          <div class="form-row">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="form-row">
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
-          </div>
-          <div class="form-row full">
-            <label for="property-address">Property Address</label>
-            <input id="property-address" name="property_address" type="text" autocomplete="street-address" required>
-          </div>
-          <div class="form-row full">
-            <label for="is-rented">Is the property currently rented?</label>
-            <select id="is-rented" name="is_property_currently_rented" required>
-              <option value="">Select one</option>
-              <option>Yes</option>
-              <option>No</option>
-              <option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="form-row full">
-            <label for="current-manager">Current Property Manager</label>
-            <input id="current-manager" name="current_property_manager" type="text" placeholder="Self-managed, company name, or none">
-          </div>
-          <div class="form-row full">
-            <label for="challenge">Biggest Challenge</label>
-            <textarea id="challenge" name="biggest_challenge" rows="5" required></textarea>
-          </div>
-          <button class="btn btn-primary form-submit" id="main-form-submit-button" type="submit">Submit My Free Analysis Request</button>
-          <p class="form-note">By submitting, you agree to be contacted about your property management inquiry.</p>
-        </form>
-      </div>
-    </section>
-
-    <section class="section final-cta">
-      <div class="section-inner">
-        <div class="final-card">
-          <p class="label">Limited New Owner Offer</p>
-          <h2>See what your Manhattan condo could rent for, then start with the $249 setup fee waived.</h2>
-          <p>Send us your building, unit size, and current status. We will return a practical rental analysis and explain exactly what our team would take off your plate.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#contact">Claim My Analysis + $249 Waiver</a>
-            <a class="btn btn-secondary" href="tel:+16465510375">Call 646-551-0375</a>
-          </div>
-          <p class="fine-print">No pressure. No obligation. Just a clear view of your condo's rental potential.</p>
-        </div>
+        <a class="btn btn-primary" href="#analysis">Free Property Analysis</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    <img src="assets/images/podium-logo-white.png" alt="OwnerFirstPM by Podium Property Management">
+  <footer class="site-footer">
+    <img src="assets/images/podium-logo-white.png" alt="Podium Property Management">
     <span>&copy; 2026 OwnerFirstPM. Manhattan-focused condo management.</span>
-    <span>135 West 50th Street, 2nd Floor, New York, NY 10020</span>
+    <a id="email-click" href="mailto:hello@ownerfirstpm.com">hello@ownerfirstpm.com</a>
   </footer>
 
   <script src="script.js"></script>
