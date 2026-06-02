@@ -72,7 +72,7 @@ export const LeadForm = () => {
     e.preventDefault();
     if (!form.name || !form.email) return;
 
-    const body = new URLSearchParams({
+    const formData: Record<string, string> = {
       "form-name": "ownerfirstpm-contact",
       "bot-field": "",
       name: form.name,
@@ -82,17 +82,17 @@ export const LeadForm = () => {
       lead_source: "Google Ads",
       pipeline_stage: "New Lead",
       status: "Active",
+    };
+
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
     });
 
-    try {
-      await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
-      });
+    if (response.ok) {
       window.location.href = "/thank-you/";
-    } catch {
-      // network failure — fall back to inline success state
+    } else {
       setSubmitted(true);
     }
   };
