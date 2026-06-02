@@ -1,13 +1,13 @@
 [build]
-  publish = "."
-  command = ""
+  command = "pnpm run build"
+  publish = "dist"
 
 [[redirects]]
   from = "/thank-you"
-  to = "/thank-you.html"
+  to = "/thank-you/index.html"
   status = 200
 
 [[redirects]]
-  from = "/thank-you/"
-  to = "/thank-you.html"
+  from = "/*"
+  to = "/index.html"
   status = 200
