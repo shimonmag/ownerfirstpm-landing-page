@@ -2,6 +2,10 @@
   command = "pnpm run build"
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "11"
+
 [[redirects]]
   from = "/thank-you"
   to = "/thank-you/index.html"
