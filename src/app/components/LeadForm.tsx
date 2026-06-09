@@ -1,6 +1,12 @@
 import { useState, type CSSProperties } from "react";
 import { PodiumMark } from "./PodiumMark";
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
 type FormData = {
   name: string;
   email: string;
@@ -91,10 +97,12 @@ export const LeadForm = () => {
     });
 
     if (response.ok) {
-      window.location.href = "/thank-you/";
-    } else {
-      setSubmitted(true);
+      (window.dataLayer = window.dataLayer || []).push({
+        event: "lead_form_submit",
+        form_name: "ownerfirstpm-contact",
+      });
     }
+    setSubmitted(true);
   };
 
   if (submitted) {
