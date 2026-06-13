@@ -1,47 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Manhattan condo management by Podium Property Management. Free property analysis for self-managing condo owners in NYC." />
-    <title>Still Managing Your Manhattan Condo Yourself? | Podium Property Management</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manhattan Condo Management | Podium Property Management</title>
+  <meta name="description" content="Stop self-managing your Manhattan condo. Podium handles tenants, repairs, leasing, and compliance. Get your free property review today." />
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PJZL7NVZ');</script>
-    <!-- End Google Tag Manager -->
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJZL7NVZ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PJZL7NVZ');</script>
+  <!-- End Google Tag Manager -->
 
-    <!--
-      Netlify form detection — this hidden form lets Netlify's CDN scan
-      discover the form at deploy time even though the real form is in React.
-    -->
-    <form
-      name="ownerfirstpm-contact"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      hidden
-    >
-      <input type="hidden" name="form-name" value="ownerfirstpm-contact" />
-      <input name="bot-field" />
-      <input name="name" />
-      <input name="email" />
-      <input name="phone" />
-      <input name="propertyAddress" />
-      <input name="lead_source" />
-      <input name="pipeline_stage" />
-      <input name="status" />
-    </form>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #F02F22;
+      --bg: #0A0A0A;
+      --bg2: #111111;
+      --white: #FFFFFF;
+      --grey: #888888;
+      --border: rgba(255,255,255,0.1);
+      --max: 1100px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+    .nav__inner {
+      max-width: var(--max);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo { height: 32px; width: auto; filter: brightness(0) invert(1); display: block; }
+    .nav__phone {
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav__phone:hover { color: var(--red); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 72px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero__inner {
+      max-width: var(--max);
+      width: 100%;
+      margin: 0 auto;
+      padding: 64px 24px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      color: var(--red);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero__label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .hero__h1 {
+      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero__h1 .dot { color: var(--red); }
+    .hero__sub {
+      font-size: 18px;
+      font-weight: 500;
+      color: #cccccc;
+      line-height: 1.7;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: #141414;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      padding: 36px 32px 32px;
+    }
+    .form-card__title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .form-group { margin-bottom: 14px; }
+    .form-group input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      padding: 14px 16px;
+      font-size: 14px;
+      font-family: 'Albert Sans', sans-serif;
+      font-weight: 400;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder { color: #555; }
+    .form-group input:focus { border-color: var(--red); }
+    .form-submit {
+      width: 100%;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 18px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      font-family: 'Albert Sans', sans-serif;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.15s;
+    }
+    .form-submit:hover { background: #D42820; }
+    .form-note {
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 80px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section--dark { background: var(--bg); }
+    .section--alt  { background: var(--bg2); }
+
+    .section__eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      color: var(--red);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section__eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .statement {
+      font-size: clamp(1.6rem, 3.2vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      max-width: 820px;
+    }
+    .statement .dot  { color: var(--red); }
+    .statement .qs   { color: var(--red); }
+
+    .statement--sm {
+      font-size: clamp(1.25rem, 2.2vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .statement--sm:last-of-type { margin-bottom: 0; }
+    .statement--sm .dot { color: var(--red); }
+
+    /* ── WHAT WE HANDLE ── */
+    .handles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 48px;
+    }
+    .handle-item {
+      background: var(--bg);
+      padding: 28px 24px;
+      transition: background 0.18s, border-color 0.18s;
+      border: 1px solid transparent;
+      cursor: default;
+    }
+    .handle-item:hover {
+      background: #1a1a1a;
+      border-color: var(--red);
+    }
+    .handle-item__icon {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .handle-item__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .handle-item__desc {
+      font-size: 12px;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* ── CLOSE / REPEAT FORM ── */
+    .close-section {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 64px;
+      align-items: center;
+    }
+    .close-copy .statement--sm { color: #CCCCCC; }
+    .close-copy .statement--lg {
+      font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .close-copy .statement--lg .dot { color: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+    .footer__inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer__logo { height: 24px; filter: brightness(0) invert(1); opacity: 0.5; }
+    .footer__text {
+      font-size: 11px;
+      color: #333;
+      letter-spacing: 0.04em;
+    }
+    .footer__text a { color: #444; text-decoration: none; }
+
+    /* ── CTA CHIP ── */
+    .cta-chip {
+      display: inline-block;
+      margin-top: 36px;
+      background: var(--red);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      padding: 12px 22px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      font-family: 'Albert Sans', sans-serif;
+      transition: background 0.15s;
+    }
+    .cta-chip:hover { background: #D42820; }
+
+    /* ── THANK YOU STATE ── */
+    .thankyou {
+      display: none;
+      text-align: center;
+      padding: 32px 0 0;
+    }
+    .thankyou__mark {
+      width: 40px;
+      height: 40px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .thankyou h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .thankyou p {
+      font-size: 13px;
+      color: var(--grey);
+      line-height: 1.6;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        padding: 48px 20px 56px;
+        gap: 40px;
+      }
+      .handles { grid-template-columns: 1fr; }
+      .close-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 20px;
+      }
+      .section { padding: 60px 20px; }
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .nav__phone { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJZL7NVZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Netlify form detection -->
+<form name="ownerfirstpm-new" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="ownerfirstpm-new" />
+  <input name="bot-field" />
+  <input name="name" />
+  <input name="email" />
+  <input name="phone" />
+  <input name="lead_source" />
+  <input name="pipeline_stage" />
+  <input name="status" />
+</form>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <img src="logo.png" alt="Podium Property Management" class="nav__logo" />
+    <a href="tel:+16465510375" class="nav__phone">646.551.0375</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__left">
+      <div class="hero__label">MANHATTAN CONDO MANAGEMENT</div>
+      <h1 class="hero__h1">
+        You didn't buy a Manhattan condo to become a property manager<span class="dot">.</span>
+      </h1>
+      <p class="hero__sub">
+        Podium handles tenants, leasing, repairs, board packages, and compliance —
+        so you can focus on what actually matters.
+      </p>
+    </div>
+    <div class="hero__right">
+      <div class="form-card" id="hero-form-wrap">
+        <div class="form-card__title">FREE CONDO MANAGEMENT ANALYSIS</div>
+        <form id="hero-form" onsubmit="submitForm(event, 'hero')">
+          <p style="display:none"><input name="bot-field" /></p>
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Full name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" />
+          </div>
+          <button type="submit" class="form-submit">FREE CONDO MANAGEMENT ANALYSIS →</button>
+          <p class="form-note">No commitment. We respond within one business day.</p>
+        </form>
+        <div class="thankyou" id="hero-thanks">
+          <div class="thankyou__mark">✓</div>
+          <h3>You're all set.</h3>
+          <p>A Podium specialist will reach out within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 02: TIME COST -->
+<div style="background: var(--bg2); border-bottom: 1px solid var(--border);">
+  <div class="section">
+    <div class="section__eyebrow">THE REAL COST OF SELF-MANAGEMENT</div>
+    <p class="statement">
+      Every hour you spend on tenant calls, repairs, and dealing with brokers
+      is an hour you're not finding your next deal, focusing on your day job,
+      or just spending time with your family<span class="dot">.</span>
+    </p>
+    <a href="#bottom-form-wrap" class="cta-chip">CLICK HERE — GET MY FREE ANALYSIS</a>
+  </div>
+</div>
+
+<!-- SLIDE 03: FARE ACT -->
+<div style="background: var(--bg); border-bottom: 1px solid var(--border);">
+  <div class="section">
+    <div class="section__eyebrow">NYC REGULATORY RISK</div>
+    <p class="statement">NYC just made vacancy more expensive<span class="dot">.</span></p>
+    <p class="statement" style="margin-top: 16px;">The FARE Act put leasing costs on the landlord<span class="dot">.</span></p>
+    <p class="statement" style="margin-top: 16px;">
+      Do you know what turnover is actually costing you<span class="qs">?</span>
+    </p>
+    <a href="#bottom-form-wrap" class="cta-chip">CLICK HERE — GET MY FREE ANALYSIS</a>
+  </div>
+</div>
+
+<!-- SLIDE 04: ASPIRATION + WHAT WE HANDLE -->
+<div style="background: var(--bg2); border-bottom: 1px solid var(--border);">
+  <div class="section">
+    <div class="section__eyebrow">THE PODIUM DIFFERENCE</div>
+    <p class="statement">
+      The best investors don't manage their properties.
+      They own them<span class="dot">.</span>
+    </p>
+    <div class="handles">
+      <div class="handle-item">
+        <div class="handle-item__icon">🏠</div>
+        <div class="handle-item__title">Tenant & Leasing</div>
+        <div class="handle-item__desc">Tenant screening, lease negotiation, renewals, and broker coordination under the FARE Act.</div>
+      </div>
+      <div class="handle-item">
+        <div class="handle-item__icon">🔧</div>
+        <div class="handle-item__title">Repairs & Maintenance</div>
+        <div class="handle-item__desc">24/7 maintenance coordination. Vetted vendors. No more landlord emergency calls.</div>
+      </div>
+      <div class="handle-item">
+        <div class="handle-item__icon">📋</div>
+        <div class="handle-item__title">Board & Compliance</div>
+        <div class="handle-item__desc">Board package prep, condo association communication, and NYC compliance tracking.</div>
+      </div>
+      <div class="handle-item">
+        <div class="handle-item__icon">💰</div>
+        <div class="handle-item__title">Rent Collection</div>
+        <div class="handle-item__desc">On-time collection, monthly owner statements, and full financial reporting.</div>
+      </div>
+      <div class="handle-item">
+        <div class="handle-item__icon">📍</div>
+        <div class="handle-item__title">Vacancy Management</div>
+        <div class="handle-item__desc">Minimize downtime between tenants. We price, list, and fill your unit fast.</div>
+      </div>
+      <div class="handle-item">
+        <div class="handle-item__icon">📞</div>
+        <div class="handle-item__title">Tenant Communication</div>
+        <div class="handle-item__desc">We handle every call, message, and request. Your phone stays quiet.</div>
+      </div>
+    </div>
+    <a href="#bottom-form-wrap" class="cta-chip" style="margin-top: 48px; display: inline-block;">CLICK HERE — GET MY FREE ANALYSIS</a>
+  </div>
+</div>
+
+<!-- SLIDE 05 + 06: CLOSE + FORM -->
+<div style="background: var(--bg);">
+  <div class="close-section">
+    <div class="close-copy">
+      <div class="section__eyebrow" style="margin-bottom: 28px;">LET'S TALK</div>
+      <p class="statement--lg">Professional management costs less than you think<span class="dot">.</span></p>
+      <p class="statement--lg">Self-management costs more than you realize<span class="dot">.</span></p>
+      <p class="statement--lg" style="color: var(--grey); font-weight: 600; margin-top: 24px; font-size: clamp(1rem, 1.8vw, 1.4rem);">
+        Let Podium handle the day-to-day.<br />You focus on what's next<span class="dot">.</span>
+      </p>
+    </div>
+    <div>
+      <div class="form-card" id="bottom-form-wrap">
+        <div class="form-card__title">GET MY FREE REVIEW</div>
+        <form id="bottom-form" onsubmit="submitForm(event, 'bottom')">
+          <p style="display:none"><input name="bot-field" /></p>
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Full name" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Email address" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" />
+          </div>
+          <button type="submit" class="form-submit">FREE CONDO MANAGEMENT ANALYSIS →</button>
+          <p class="form-note">No commitment. We respond within one business day.</p>
+        </form>
+        <div class="thankyou" id="bottom-thanks">
+          <div class="thankyou__mark">✓</div>
+          <h3>You're all set.</h3>
+          <p>A Podium specialist will reach out within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer__inner">
+    <img src="logo.png" alt="Podium Property Management" class="footer__logo" />
+    <div class="footer__text">
+      135 West 50 Street, 2FL · New York, NY 10020 ·
+      <a href="tel:+16465510375">646.551.0375</a>
+    </div>
+    <div class="footer__text">© 2026 Podium Property Management</div>
+  </div>
+</footer>
+
+<script>
+  function submitForm(e, which) {
+    e.preventDefault();
+    var form = e.target;
+    var name = form.querySelector('[name="name"]').value;
+    var email = form.querySelector('[name="email"]').value;
+    var phone = form.querySelector('[name="phone"]').value;
+
+    var body = new URLSearchParams({
+      'form-name': 'ownerfirstpm-new',
+      'bot-field': '',
+      name: name,
+      email: email,
+      phone: phone,
+      lead_source: 'Google Ads',
+      pipeline_stage: 'New Lead',
+      status: 'Active'
+    }).toString();
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body
+    }).then(function(res) {
+      if (res.ok) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'lead_form_submit', form_name: 'ownerfirstpm-new' });
+      }
+      // Show thank you regardless (even on network error, form may have gone through)
+      form.style.display = 'none';
+      document.getElementById(which + '-thanks').style.display = 'block';
+    }).catch(function() {
+      form.style.display = 'none';
+      document.getElementById(which + '-thanks').style.display = 'block';
+    });
+  }
+</script>
+
+</body>
 </html>
